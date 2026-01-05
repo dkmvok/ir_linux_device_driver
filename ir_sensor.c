@@ -1,3 +1,4 @@
+/* Kernel */
 #define GPIO_TRIGGER 23
 #define GPIO_OUT  3
 
@@ -46,13 +47,13 @@ static int ir_dev_init(void)
         return -1;
     }
 
-     if (gpio_request(GPIO_TRIGGER, "GPIO_TRIGGER") < 0) {
+    if (gpio_request(GPIO_TRIGGER, "GPIO_TRIGGER") < 0) {
         pr_err("ERROR ir_cdev: Request for gpio %d\n", GPIO_TRIGGER);
         gpio_free(GPIO_TRIGGER);
         return -1;
     }
 
-     if (gpio_request(GPIO_OUT, "GPIO_OUT") < 0) {
+    if (gpio_request(GPIO_OUT, "GPIO_OUT") < 0) {
         pr_err("ERROR ir_cdev: Request for gpio %d\n", GPIO_OUT);
         gpio_free(GPIO_OUT);
         return -1;
@@ -68,7 +69,6 @@ static void ir_dev_exit(void)
     gpio_set_value(GPIO_TRIGGER, 0);
     gpio_free(GPIO_TRIGGER);
     gpio_free(GPIO_OUT);
-     pr_info("ir_cdev: exiting ir dev\n");
-
+    pr_info("ir_cdev: exiting ir dev\n");
 
 }
